@@ -1,12 +1,12 @@
 <a href="#">
-  <img height=200 align="center" src="https://my-stats-43gk.vercel.app/api?username=js9726&show_icons=true&theme=radical&hide=contribs,issues&show=discussions_answered&rank_icon=github&include_all_commits=true&card_width=150" />
+  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api?username=js9726&show_icons=true&theme=radical&hide=contribs,issues&show=discussions_answered&rank_icon=github&include_all_commits=true&card_width=320" />
 </a>
 <a href="#">
-  <img height=200 align="center" src="https://my-stats-43gk.vercel.app/api/top-langs/?username=js9726&hide=html,scss,css&langs_count=3&layout=compact&theme=radical&card_width=150" />
+  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=js9726&layout=compact&langs_count=8&theme=radical&card_width=320" />
 </a>
 
 <img align="left" height=202 src="https://github-readme-streak-stats-git-main-davids-projects-ad77adcc.vercel.app/?user=js9726&theme=radical"/>
-<img align="left" height=97 src="https://github-profile-trophy.vercel.app/?username=js9726&theme=radical&no-frame=true&title=Stars,Followers,Commits&column=-1"/>
+<img align="center" height=97 src="https://github-profile-trophy.vercel.app/?username=js9726&theme=radical&no-frame=true&title=Stars,Followers,Commits&column=-1"/>
 
 
 
