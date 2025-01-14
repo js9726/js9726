@@ -1,0 +1,45 @@
+name: Update README with Last Updated Repo
+
+on:
+  schedule:
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Get all repositories
+      - name: Fetch Repositories
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          repository: ${{ github.repository_owner }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Get the last updated repo (excluding this one)
+      - name: Get Last Updated Repo
+        id: get_last_updated
+        run: |
+          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/users/${{ github.repository_owner }}/repos?sort=updated&direction=desc" > repos.json
+          LAST_UPDATED_REPO=$(jq -r '[.[] | select(.name != "'"${GITHUB_REPOSITORY##*/}"'")][0].name' repos.json)
+          echo "last_repo_name=$LAST_UPDATED_REPO" >> $GITHUB_ENV
+
+      # Update README.md
+      - name: Update README.md
+        run: |
+          sed -i "s/Current Working Project:.*/Current Working Project: ${{ env.last_repo_name }}/" README.md
+
+      # Commit and push changes
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add README.md
+          git commit -m "Update README with last updated repo"
+          git push
