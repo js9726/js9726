@@ -2,7 +2,7 @@ name: Update README with Last Updated Repo
 
 on:
   schedule:
-    - cron: '0 * * * *' # Runs every hour
+    - cron: '0 12 * * 3' # At 12:00 on Wednesday.” https://crontab.guru/#0_12_*_*_3
   workflow_dispatch: # Allows manual trigger
 
 jobs:
